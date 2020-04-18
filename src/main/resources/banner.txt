@@ -1,0 +1,4 @@
+application.version=999
+abc=ced
+This is the usage for variable evaluating
+${spring-boot.version}
