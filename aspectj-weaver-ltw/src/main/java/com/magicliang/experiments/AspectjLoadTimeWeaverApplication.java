@@ -15,9 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/res/v1")
 @Slf4j
-// 不同的环境有不同的 LoadTimeWeaver 实现，目前强依赖于 aop.xml 文件，否则无法激活 weaver register 各种 aspect
-// @EnableLoadTimeWeaving(aspectjWeaving = EnableLoadTimeWeaving.AspectJWeaving.ENABLED)
-
 // 只有打开这个注解， @Configurable 注解才会生效
 @EnableSpringConfigured
 @SpringBootApplication

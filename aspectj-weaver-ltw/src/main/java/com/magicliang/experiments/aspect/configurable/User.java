@@ -14,10 +14,10 @@ import org.springframework.beans.factory.annotation.Configurable;
  *
  * 要给 jvm 加参数，而不是 application 加参数（application 的 main class 本身也是 jvm 的一个参数）：
  * $HOME
- * -javaagent:/Users/magicliang/.m2/repository/org/springframework/spring-instrument/5.2.5.RELEASE/spring-instrument-5.2.5.RELEASE.jar
+ * -javaagent:${HOME}/.m2/repository/org/springframework/spring-instrument/5.2.5.RELEASE/spring-instrument-5.2.5.RELEASE.jar
  *
  * 不要使用这个参数，没用：
- * -Xset:weaveJavaxPackages=true -javaagent:/Users/magicliang/.m2/repository/org/aspectj/aspectjweaver/1.9.5/aspectjweaver-1.9.5.jar
+ * -Xset:weaveJavaxPackages=true -javaagent:${HOME}/.m2/repository/org/aspectj/aspectjweaver/1.9.5/aspectjweaver-1.9.5.jar
  *
  * @author magicliang
  * <p>
@@ -29,8 +29,6 @@ import org.springframework.beans.factory.annotation.Configurable;
 // preConstruction 一用上，就会导致注入在 construction 之前。value = "user"，以为着要寻找一个名为 user 的 bean definition
 // @Configurable(autowire = Autowire.BY_NAME, dependencyCheck = true)
 @Configurable
-// 没什么用
-// @Scope(BeanDefinition.SCOPE_PROTOTYPE)
 @Slf4j
 public class User {
 
