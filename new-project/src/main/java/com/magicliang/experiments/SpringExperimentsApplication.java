@@ -3,13 +3,9 @@ package com.magicliang.experiments;
 import com.magicliang.experiments.aspect.configurable.Dog;
 import com.magicliang.experiments.aspect.configurable.User;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.aspectj.AnnotationBeanConfigurerAspect;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.EnableLoadTimeWeaving;
-import org.springframework.context.annotation.aspectj.EnableSpringConfigured;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,9 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/res/v1")
 @Slf4j
-// 不同的环境有不同的 LoadTimeWeaver 实现
-@EnableLoadTimeWeaving(aspectjWeaving = EnableLoadTimeWeaving.AspectJWeaving.ENABLED)
-@EnableSpringConfigured
+// 不同的环境有不同的 LoadTimeWeaver 实现，目前强依赖于 aop.xml 文件，否则无法激活 weaver register 各种 aspect
+// @EnableLoadTimeWeaving(aspectjWeaving = EnableLoadTimeWeaving.AspectJWeaving.ENABLED)
+// @EnableSpringConfigured
 @SpringBootApplication
 public class SpringExperimentsApplication {
 
@@ -36,13 +32,20 @@ public class SpringExperimentsApplication {
     }
 
     @Bean
-    @ConditionalOnClass(AnnotationBeanConfigurerAspect.class)
+        // @ConditionalOnClass(AnnotationBeanConfigurerAspect.class)
     Dog dog() {
         Dog d = new Dog();
         d.setId(1);
         d.setName("dog");
         return d;
     }
+
+//    @Bean
+//    public ProfilingAspect interceptor() {
+//        // This will barf at runtime if the weaver isn't working (probably a
+//        // good thing)
+//        return Aspects.aspectOf(ProfilingAspect.class);
+//    }
 
 //    @Bean
 //    public CommandLineRunner demo() {

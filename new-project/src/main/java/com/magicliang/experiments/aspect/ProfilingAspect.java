@@ -1,9 +1,11 @@
 package com.magicliang.experiments.aspect;
 
+import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.util.StopWatch;
 
 /**
@@ -15,6 +17,8 @@ import org.springframework.util.StopWatch;
  * <p>
  * date: 2020-04-18 23:28
  */
+@Slf4j
+@ConfigurationProperties("interceptor")
 @Aspect
 public class ProfilingAspect {
 
@@ -26,7 +30,7 @@ public class ProfilingAspect {
             return pjp.proceed();
         } finally {
             sw.stop();
-            System.out.println(sw.prettyPrint());
+            log.info("time:" + sw.prettyPrint());
         }
     }
 
