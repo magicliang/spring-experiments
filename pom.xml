@@ -22,7 +22,8 @@
 
 	<modules>
 		<module>old-project</module>
-		<module>new-project</module>
+		<!-- 这里依赖的不是 child pom 里的 name 和 artifactid，而是 name -->
+		<module>aspectj-weaver-ltw</module>
 	</modules>
 
 	<dependencies>

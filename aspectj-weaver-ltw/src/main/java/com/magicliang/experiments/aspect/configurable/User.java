@@ -3,6 +3,7 @@ package com.magicliang.experiments.aspect.configurable;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Configurable;
 
 /**
  * project name: spring-experiments
@@ -26,9 +27,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 // 这个注解不能放在 spring-managed bean 上，不然会导致对象被初始化两次
 // 这个注解什么作用都不起，它会指示 AnnotationBeanConfigurerAspect 在 construction前后把依赖注入进这个 bean。注解和切面会联系在一起
 // preConstruction 一用上，就会导致注入在 construction 之前。value = "user"，以为着要寻找一个名为 user 的 bean definition
-// @Configurable(
-//         value = "user",
-//         autowire = Autowire.BY_NAME, dependencyCheck = true)
+// @Configurable(autowire = Autowire.BY_NAME, dependencyCheck = true)
+@Configurable
 // @Scope(BeanDefinition.SCOPE_PROTOTYPE)
 // @DependsOn("org.springframework.beans.factory.aspectj.AnnotationBeanConfigurerAspect")
 @Slf4j
@@ -42,7 +42,7 @@ public class User {
     }
 
     public void foo() {
-        log.info("123");
+        log.info("doggy is:" + dog.toString());
     }
 
     private String name;

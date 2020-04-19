@@ -8,9 +8,9 @@
         <groupId>com.magicliang</groupId>
         <version>${revision}</version>
     </parent>
-    <artifactId>new-project</artifactId>
+    <artifactId>aspectj-weaver-ltw</artifactId>
     <packaging>jar</packaging>
-    <name>new-project</name>
+    <name>aspectj-weaver-ltw</name>
     <dependencies>
     </dependencies>
 </project>

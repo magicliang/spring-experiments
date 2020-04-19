@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.aspectj.EnableSpringConfigured;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,12 +17,14 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 // 不同的环境有不同的 LoadTimeWeaver 实现，目前强依赖于 aop.xml 文件，否则无法激活 weaver register 各种 aspect
 // @EnableLoadTimeWeaving(aspectjWeaving = EnableLoadTimeWeaving.AspectJWeaving.ENABLED)
-// @EnableSpringConfigured
+
+// 只有打开这个注解， @Configurable 注解才会生效
+@EnableSpringConfigured
 @SpringBootApplication
-public class SpringExperimentsApplication {
+public class AspectjLoadTimeWeaverApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringExperimentsApplication.class, args);
+        SpringApplication.run(AspectjLoadTimeWeaverApplication.class, args);
     }
 
     @GetMapping("/user")
@@ -31,8 +34,9 @@ public class SpringExperimentsApplication {
         return user;
     }
 
+    // 没什么卵用的 ConditionalOnClass
+    // @ConditionalOnClass(AnnotationBeanConfigurerAspect.class)
     @Bean
-        // @ConditionalOnClass(AnnotationBeanConfigurerAspect.class)
     Dog dog() {
         Dog d = new Dog();
         d.setId(1);
@@ -40,6 +44,7 @@ public class SpringExperimentsApplication {
         return d;
     }
 
+    // 这个 bean 方法有的项目建议有，但其实没有也无所谓
 //    @Bean
 //    public ProfilingAspect interceptor() {
 //        // This will barf at runtime if the weaver isn't working (probably a

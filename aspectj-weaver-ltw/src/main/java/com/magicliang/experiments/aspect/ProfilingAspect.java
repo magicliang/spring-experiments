@@ -5,7 +5,6 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.util.StopWatch;
 
 /**
@@ -18,7 +17,8 @@ import org.springframework.util.StopWatch;
  * date: 2020-04-18 23:28
  */
 @Slf4j
-@ConfigurationProperties("interceptor")
+// 这个注解可有可无
+// @ConfigurationProperties("interceptor")
 @Aspect
 public class ProfilingAspect {
 
