@@ -4,8 +4,10 @@
 <aspectj>
     <weaver options="-verbose -showWeaveInfo">
         <!-- only weave classes in our application-specific packages -->
+        <!-- .. 代表子包 -->
         <include within="com.magicliang..*"/>
-        <include within="org.springframework.boot..*"/>
+        <!-- 绝大多数情况下，不需要打开这个注解，我们不需要 advised spring boot 自己的模块 -->
+        <!--        <include within="org.springframework.boot..*"/>-->
     </weaver>
     <aspects>
         <!-- weave in just this aspect -->
