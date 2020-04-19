@@ -1,7 +1,6 @@
 package com.magicliang.experiments;
 
 
-import com.magicliang.experiments.entity.User;
 import com.magicliang.experiments.repository.UserRepository;
 import com.magicliang.experiments.service.MultiThreadService;
 import org.slf4j.Logger;
@@ -11,8 +10,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.io.File;
 
@@ -30,7 +27,7 @@ import java.io.File;
 //@PropertySource(value = { "classpath:application.properties" })//Also don't need this
 public class SpringBootMvcApplication {
 
-    private static final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    //    private static final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
     private static final Logger log = LoggerFactory.getLogger(SpringBootMvcApplication.class);
     public static String ROOT = "upload-dir";
     @Autowired
@@ -55,9 +52,9 @@ public class SpringBootMvcApplication {
             userRepository.deleteInBatch(userRepository.findAll());
             //userRepository.findByName()
             //password: Encrypted 123 $2a$10$W7fimbsfYVHG.nS5ZhqtfeyIftVRfNGeVpsj2RvW.1B8JgKHeClDO
-            userRepository.save(new User("Chuan", passwordEncoder.encode("123")));
-            userRepository.save(new User("Liang", passwordEncoder.encode("123")));
-            userRepository.save(new User("Test", passwordEncoder.encode("123")));
+//            userRepository.save(new User("Chuan", passwordEncoder.encode("123")));
+//            userRepository.save(new User("Liang", passwordEncoder.encode("123")));
+//            userRepository.save(new User("Test", passwordEncoder.encode("123")));
             // fetch all customers
             log.info("Users found with findAll():");
             log.info("-------------------------------");

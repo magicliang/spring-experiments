@@ -1,0 +1,14 @@
+<!DOCTYPE aspectj PUBLIC "-//AspectJ//DTD//EN" "https://www.eclipse.org/aspectj/dtd/aspectj.dtd">
+<aspectj>
+
+    <weaver>
+        <!-- only weave classes in our application-specific packages -->
+        <include within="com.magicliang.*"/>
+    </weaver>
+
+    <aspects>
+        <!-- weave in just this aspect -->
+        <aspect name="com.magicliang.experiments.aspect.ProfilingAspect"/>
+    </aspects>
+
+</aspectj>
