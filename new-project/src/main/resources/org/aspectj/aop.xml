@@ -1,14 +1,13 @@
 <!DOCTYPE aspectj PUBLIC "-//AspectJ//DTD//EN" "https://www.eclipse.org/aspectj/dtd/aspectj.dtd">
-<aspectj>
+<!-- 这个文件只能放在类路径下的 META-INF 或者  org/aspectj 文件夹里-->
 
+<aspectj>
     <weaver options="-verbose -showWeaveInfo">
         <!-- only weave classes in our application-specific packages -->
         <include within="com.magicliang.*"/>
     </weaver>
-
     <aspects>
         <!-- weave in just this aspect -->
         <aspect name="com.magicliang.experiments.aspect.ProfilingAspect"/>
     </aspects>
-
 </aspectj>
