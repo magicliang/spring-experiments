@@ -1,0 +1,17 @@
+<!DOCTYPE aspectj PUBLIC "-//AspectJ//DTD//EN" "https://www.eclipse.org/aspectj/dtd/aspectj.dtd">
+<!-- 这个文件只能放在类路径下的 META-INF 或者  org/aspectj 文件夹里-->
+<!-- 放在 org/aspectj 文件夹里更好，因为 https://github.com/dsyer/spring-boot-aspectj -->
+<aspectj>
+    <weaver options="-verbose -showWeaveInfo">
+        <!-- only weave classes in our application-specific packages -->
+        <!-- .. 代表子包 -->
+        <!-- 这里可以注释掉，aspect 也会生效 -->
+        <include within="com.magicliang..*"/>
+        <!-- 绝大多数情况下，不需要打开这个注解，我们不需要 advised spring boot 自己的模块 -->
+        <!--        <include within="org.springframework.boot..*"/>-->
+    </weaver>
+    <aspects>
+        <!-- 这里不能注释，否则无法让切面生效 -->
+        <aspect name="com.magicliang.experiments.aspect.ProfilingAspect"/>
+    </aspects>
+</aspectj>
