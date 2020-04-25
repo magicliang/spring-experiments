@@ -13,11 +13,7 @@ import org.springframework.beans.factory.annotation.Configurable;
  * 使用 javaagent 要改启动脚本。
  *
  * 要给 jvm 加参数，而不是 application 加参数（application 的 main class 本身也是 jvm 的一个参数）：
- * $HOME
- * -javaagent:${HOME}/.m2/repository/org/springframework/spring-instrument/5.2.5.RELEASE/spring-instrument-5.2.5.RELEASE.jar
- *
- * 不要使用这个参数，没用：
- * -Xset:weaveJavaxPackages=true -javaagent:${HOME}/.m2/repository/org/aspectj/aspectjweaver/1.9.5/aspectjweaver-1.9.5.jar
+ * -javaagent:${HOME}/.m2/repository/org/aspectj/aspectjweaver/1.9.5/aspectjweaver-1.9.5.jar
  *
  * @author magicliang
  * <p>
