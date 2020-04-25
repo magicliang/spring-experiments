@@ -26,6 +26,7 @@
 		<module>aspectj-weaver-ltw</module>
 		<module>spring-instrument-ltw</module>
 		<module>compile-time-weaver</module>
+        <module>aspectj-introduction</module>
 	</modules>
 
 	<dependencies>

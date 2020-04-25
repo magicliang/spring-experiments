@@ -41,4 +41,10 @@ public class User {
 
     private String name;
     private int age;
+
+    public static void main(String[] args) {
+        String a = "9";
+        String b = "10";
+        System.out.println(a.compareTo(b));
+    }
 }
