@@ -4,9 +4,10 @@ target/
 !**/src/main/**
 !**/src/test/**
 
-### .idea/*
+.idea/*
 .DS_Store
 */.DS_Store
+*.log
 
 ### STS ###
 .apt_generated
