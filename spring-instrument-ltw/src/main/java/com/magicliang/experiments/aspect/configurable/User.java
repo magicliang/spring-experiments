@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Configurable;
  * <p>
  * 使用 javaagent 要改启动脚本。
  * <p>
- * 要给 jvm 加参数，而不是 application 加参数（application 的 main class 本身也是 jvm 的一个参数）：
+ * 要给 jvm 加参数（也就 -javaagent 加在 java 命令后面），而不是 application 加参数（application 的 main class 本身也是 jvm 的一个参数，也就是参数不要加在 -jar abc.jar 后面）：
  * $HOME
  * -javaagent:/Users/magicliang/.m2/repository/org/springframework/spring-instrument/5.2.5.RELEASE/spring-instrument-5.2.5.RELEASE.jar
  * <p>
